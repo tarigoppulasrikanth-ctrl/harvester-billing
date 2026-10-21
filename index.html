@@ -162,6 +162,7 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             border-radius: 8px;
             margin-top: 8px;
+            cursor: pointer;
         }
         .payment-icons {
             font-size: 12px;
@@ -261,40 +262,41 @@
             font-size: 14px;
         }
 
-        /* PDF Printable Template Styling */
+        /* PDF Printable Template Styling - Optimized for A4 Single Page */
         #pdfTemplate {
             background: #ffffff;
             color: #333;
             font-family: Arial, sans-serif;
             width: 100%;
-            max-width: 700px;
-            padding: 20px;
+            max-width: 650px;
+            padding: 15px;
+            box-sizing: border-box;
         }
         .pdf-header {
             text-align: center;
-            border-bottom: 3px solid #2e7d32;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
+            border-bottom: 2px solid #2e7d32;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
         }
         .pdf-header h1 {
             color: #2e7d32;
-            font-size: 24px;
-            margin-bottom: 3px;
+            font-size: 20px;
+            margin-bottom: 2px;
         }
         .pdf-header p {
             color: #666;
-            font-size: 13px;
+            font-size: 12px;
         }
         .pdf-table {
             width: 100%;
             border-collapse: collapse;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .pdf-table th, .pdf-table td {
-            border: 1px solid #ddd;
-            padding: 8px 12px;
+            border: 1px solid #ccc;
+            padding: 7px 10px;
             text-align: left;
-            font-size: 13px;
+            font-size: 12px;
         }
         .pdf-table th {
             background-color: #2e7d32;
@@ -303,27 +305,20 @@
         }
         .pdf-total-row {
             background-color: #e8f5e9;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
             color: #1b5e20;
         }
         .pdf-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            text-align: center;
             margin-top: 15px;
-            border-top: 1px solid #ccc;
+            border-top: 1px solid #ddd;
             padding-top: 10px;
         }
         .pdf-footer img {
-            width: 110px;
-            height: 110px;
-        }
-        .pdf-signature {
-            text-align: right;
-            font-weight: bold;
-            color: #444;
-            font-size: 13px;
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -342,7 +337,7 @@
             🔒 Bill Generated & Saved Successfully!
         </div>
 
-        <!-- Dynamic Owner Details Section -->
+        <!-- Dynamic Editable Owner Details Section -->
         <div class="owner-section">
             <h3>🚜 Owner Details</h3>
             <div class="form-group" style="margin-bottom: 10px;">
@@ -394,8 +389,10 @@
         </div>
 
         <div class="code-container" id="codeContainer">
-            <label style="color: #2e7d32; font-size: 13px; font-weight: bold; display: block;">📲 UPI Payment QR Code:</label>
-            <img id="barcodeImage" src="" alt="Payment QR Code">
+            <label style="color: #2e7d32; font-size: 13px; font-weight: bold; display: block;">📲 Tap QR Code to Pay via UPI:</label>
+            <a id="upiLink" href="#" target="_blank">
+                <img id="barcodeImage" src="" alt="Payment QR Code">
+            </a>
             <div class="payment-icons">PhonePe | Google Pay | Paytm | Amazon Pay</div>
         </div>
 
@@ -415,7 +412,7 @@
     </div>
 </div>
 
-<!-- Hidden Template for PDF Generation -->
+<!-- Hidden Template for A4 PDF Generation -->
 <div id="pdfTemplate" style="display:none;">
     <div class="pdf-header">
         <h1>🌾 HARVESTER SERVICE BILL 🌾</h1>
@@ -424,11 +421,11 @@
 
     <table class="pdf-table">
         <tr>
-            <th>Field Name</th>
-            <th>Value</th>
+            <th style="width: 45%;">Field Name</th>
+            <th style="width: 55%;">Value</th>
         </tr>
         <tr>
-            <td><strong>Bill Generated Date & Time</strong></td>
+            <td><strong>Bill Date & Time</strong></td>
             <td id="pdfDateTime">-</td>
         </tr>
         <tr>
@@ -474,15 +471,11 @@
     </table>
 
     <div class="pdf-footer">
-        <div>
-            <p style="font-size: 11px; color: #555; margin-bottom: 4px;"><strong>Scan to Pay via PhonePe / GPay:</strong></p>
-            <img id="pdfQRImg" src="" alt="Payment QR" style="width:100px; height:100px;">
-        </div>
-        <div class="pdf-signature">
-            <br><br>
-            ________________________<br>
-            Harvester Owner Signature
-        </div>
+        <p style="font-size: 11px; color: #333; margin-bottom: 5px; font-weight: bold;">Tap / Scan 2D Barcode to Pay via UPI:</p>
+        <a id="pdfUpiLink" href="#" target="_blank">
+            <img id="pdfQRImg" src="" alt="Payment QR">
+        </a>
+        <p style="font-size: 10px; color: #666; margin-top: 3px;">Supports PhonePe, Google Pay, Paytm & BHIM UPI</p>
     </div>
 </div>
 
@@ -552,12 +545,14 @@
     function generatePaymentQR(ownerPhone, total) {
         const container = document.getElementById('codeContainer');
         const img = document.getElementById('barcodeImage');
+        const upiLink = document.getElementById('upiLink');
 
         if (validateIndianMobile(ownerPhone) && total > 0) {
             const upiUrl = `upi://pay?pa=${ownerPhone}@upi&pn=HarvesterOwner&am=${total}&cu=INR`;
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
             
             img.src = qrUrl;
+            upiLink.href = upiUrl;
             container.style.display = 'block';
         } else {
             container.style.display = 'none';
@@ -684,12 +679,13 @@
 
         const upiUrl = `upi://pay?pa=${ownerPhoneVal}@upi&pn=HarvesterOwner&am=${item.total || 0}&cu=INR`;
         document.getElementById('pdfQRImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
+        document.getElementById('pdfUpiLink').href = upiUrl;
 
         const pdfElement = document.getElementById('pdfTemplate');
         pdfElement.style.display = 'block';
 
         const opt = {
-            margin:       0.3,
+            margin:       0.2,
             filename:     `Harvester_Bill_${(item.farmerName || 'Bill').replace(/\s+/g, '_')}.pdf`,
             image:        { type: 'jpeg', quality: 0.98 },
             html2canvas:  { scale: 2, useCORS: true },
