@@ -439,11 +439,11 @@
             <div class="row-2">
                 <div class="form-group">
                     <label>Start Time:</label>
-                    <input type="time" class="trip-start" oninput="calculateTotal()">
+                    <input type="time" class="trip-start" onchange="calculateTotal()" oninput="calculateTotal()">
                 </div>
                 <div class="form-group">
                     <label>End Time:</label>
-                    <input type="time" class="trip-end" oninput="calculateTotal()">
+                    <input type="time" class="trip-end" onchange="calculateTotal()" oninput="calculateTotal()">
                 </div>
             </div>
             <div class="row-2">
@@ -468,9 +468,15 @@
         const card = document.getElementById(`tripCard_${id}`);
         if (card) {
             card.remove();
-            tripCount--;
             calculateTotal();
         }
+    }
+
+    function parseTimeToMinutes(timeStr) {
+        if (!timeStr) return null;
+        const parts = timeStr.split(':');
+        if (parts.length < 2) return null;
+        return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
     }
 
     function calculateTotal() {
@@ -485,18 +491,18 @@
 
         const cards = document.querySelectorAll('.trip-card');
         cards.forEach(card => {
-            const start = card.querySelector('.trip-start').value;
-            const end = card.querySelector('.trip-end').value;
+            const startVal = card.querySelector('.trip-start').value;
+            const endVal = card.querySelector('.trip-end').value;
             const stop = parseFloat(card.querySelector('.trip-stop').value) || 0;
             const wheel = card.querySelector('.trip-wheel').value;
 
-            if (start && end) {
-                const sDate = new Date(`1970-01-01T${start}:00`);
-                let eDate = new Date(`1970-01-01T${end}:00`);
-                if (eDate < sDate) eDate.setDate(eDate.getDate() + 1);
+            const startMins = parseTimeToMinutes(startVal);
+            const endMins = parseTimeToMinutes(endVal);
 
-                let diffMs = eDate - sDate;
-                let diffMins = Math.floor(diffMs / (1000 * 60)) - stop;
+            if (startMins !== null && endMins !== null) {
+                let diffMins = endMins - startMins;
+                if (diffMins < 0) diffMins += 1440; // overnight handling
+                diffMins -= stop;
                 if (diffMins < 0) diffMins = 0;
 
                 totalMinsAll += diffMins;
@@ -584,17 +590,18 @@
 
         const cards = document.querySelectorAll('.trip-card');
         cards.forEach((card, idx) => {
-            const start = card.querySelector('.trip-start').value;
-            const end = card.querySelector('.trip-end').value;
+            const startVal = card.querySelector('.trip-start').value;
+            const endVal = card.querySelector('.trip-end').value;
             const stop = parseFloat(card.querySelector('.trip-stop').value) || 0;
             const wheel = card.querySelector('.trip-wheel').value;
 
-            if (start && end) {
-                const sDate = new Date(`1970-01-01T${start}:00`);
-                let eDate = new Date(`1970-01-01T${end}:00`);
-                if (eDate < sDate) eDate.setDate(eDate.getDate() + 1);
+            const startMins = parseTimeToMinutes(startVal);
+            const endMins = parseTimeToMinutes(endVal);
 
-                let diffMins = Math.floor((eDate - sDate) / (1000 * 60)) - stop;
+            if (startMins !== null && endMins !== null) {
+                let diffMins = endMins - startMins;
+                if (diffMins < 0) diffMins += 1440;
+                diffMins -= stop;
                 if (diffMins < 0) diffMins = 0;
 
                 const rate = (wheel === '2') ? p2 : p4;
@@ -609,7 +616,9 @@
                 tripsData.push({
                     tripNo: idx + 1,
                     wheel: `${wheel} Wheel`,
-                    start, end, stop,
+                    start: startVal,
+                    end: endVal,
+                    stop: stop,
                     duration: `${hrs}h ${mins}m`,
                     amount: amt
                 });
@@ -718,7 +727,6 @@
 
         let html = '';
         history.forEach(item => {
-            // FIX: Ensure totalDuration displays correctly even for older stored data
             let displayDuration = item.totalDuration;
             if (!displayDuration || displayDuration.includes('undefined')) {
                 if (item.trips && item.trips.length > 0) {
