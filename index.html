@@ -24,7 +24,7 @@
         .container {
             background: #ffffff;
             width: 100%;
-            max-width: 520px;
+            max-width: 550px;
             padding: 20px;
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -56,12 +56,6 @@
         .page.active {
             display: block;
         }
-        h2 {
-            text-align: center;
-            color: #2e7d32;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
         .lock-badge {
             display: none;
             background-color: #fff3cd;
@@ -87,40 +81,78 @@
             margin-bottom: 10px;
         }
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
-        label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: #444;
-            margin-bottom: 5px;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: 0.3s;
-        }
-        input:focus {
-            border-color: #2e7d32;
-            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
-        }
-        input:disabled {
-            background-color: #e9ecef;
-            color: #6c757d;
-            cursor: not-allowed;
-            border-color: #ced4da;
-        }
-        .time-row {
+        .row-2 {
             display: flex;
             gap: 10px;
         }
-        .time-row .form-group {
+        .row-2 .form-group {
             flex: 1;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 4px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+            background: white;
+        }
+        input:focus, select:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+        }
+        input:disabled, select:disabled {
+            background-color: #e9ecef;
+            color: #6c757d;
+            cursor: not-allowed;
+        }
+        .trip-card {
+            background-color: #fafafa;
+            border: 1px solid #e0e0e0;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            position: relative;
+        }
+        .trip-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2e7d32;
+            font-size: 14px;
+        }
+        .btn-remove-trip {
+            background: #d32f2f;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        .btn-add-trip {
+            width: 100%;
+            background-color: #0288d1;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 14px;
         }
         .bill-box {
             background-color: #e8f5e9;
@@ -128,7 +160,6 @@
             padding: 15px;
             border-radius: 10px;
             text-align: center;
-            margin-top: 15px;
             margin-bottom: 15px;
         }
         .bill-box h3 {
@@ -157,18 +188,12 @@
             display: none;
         }
         .code-container img {
-            max-width: 150px;
+            max-width: 140px;
             border: 3px solid #fff;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             border-radius: 8px;
             margin-top: 8px;
             cursor: pointer;
-        }
-        .payment-icons {
-            font-size: 12px;
-            color: #555;
-            margin-top: 6px;
-            font-weight: bold;
         }
         .action-buttons {
             display: flex;
@@ -185,33 +210,18 @@
             font-size: 16px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-save-pdf:hover {
-            background-color: #1b5e20;
         }
         .btn-reset {
             display: none;
             width: 100%;
-            background-color: #0288d1;
+            background-color: #555;
             color: white;
-            padding: 14px;
+            padding: 12px;
             border: none;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             cursor: pointer;
-            transition: 0.2s;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-reset:hover {
-            background-color: #0277bd;
         }
 
         .history-card {
@@ -220,21 +230,6 @@
             border-radius: 10px;
             padding: 12px;
             margin-bottom: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .history-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            color: #2e7d32;
-            margin-bottom: 6px;
-            font-size: 15px;
-        }
-        .history-details {
-            font-size: 13px;
-            color: #555;
-            line-height: 1.5;
-            margin-bottom: 8px;
         }
         .btn-sm {
             padding: 8px 12px;
@@ -244,25 +239,10 @@
             cursor: pointer;
             font-weight: bold;
         }
-        .btn-pdf-sm {
-            background-color: #d32f2f;
-            color: white;
-            width: 100%;
-        }
-        .btn-delete {
-            background-color: #757575;
-            color: white;
-            width: 100%;
-            margin-top: 4px;
-        }
-        .no-history {
-            text-align: center;
-            color: #888;
-            padding: 30px 0;
-            font-size: 14px;
-        }
+        .btn-pdf-sm { background-color: #d32f2f; color: white; width: 100%; }
+        .btn-delete { background-color: #757575; color: white; width: 100%; margin-top: 4px; }
 
-        /* PDF Printable Template Styling - Optimized for A4 Single Page */
+        /* PDF Printable Template Styling */
         #pdfTemplate {
             background: #ffffff;
             color: #333;
@@ -270,7 +250,6 @@
             width: 100%;
             max-width: 650px;
             padding: 15px;
-            box-sizing: border-box;
         }
         .pdf-header {
             text-align: center;
@@ -278,15 +257,7 @@
             padding-bottom: 8px;
             margin-bottom: 12px;
         }
-        .pdf-header h1 {
-            color: #2e7d32;
-            font-size: 20px;
-            margin-bottom: 2px;
-        }
-        .pdf-header p {
-            color: #666;
-            font-size: 12px;
-        }
+        .pdf-header h1 { color: #2e7d32; font-size: 20px; }
         .pdf-table {
             width: 100%;
             border-collapse: collapse;
@@ -294,32 +265,14 @@
         }
         .pdf-table th, .pdf-table td {
             border: 1px solid #ccc;
-            padding: 7px 10px;
+            padding: 6px 8px;
             text-align: left;
-            font-size: 12px;
+            font-size: 11px;
         }
-        .pdf-table th {
-            background-color: #2e7d32;
-            color: white;
-            font-weight: bold;
-        }
-        .pdf-total-row {
-            background-color: #e8f5e9;
-            font-size: 14px;
-            font-weight: bold;
-            color: #1b5e20;
-        }
-        .pdf-footer {
-            text-align: center;
-            margin-top: 15px;
-            border-top: 1px solid #ddd;
-            padding-top: 10px;
-        }
-        .pdf-footer img {
-            width: 120px;
-            height: 120px;
-            cursor: pointer;
-        }
+        .pdf-table th { background-color: #2e7d32; color: white; }
+        .pdf-total-row { background-color: #e8f5e9; font-size: 13px; font-weight: bold; color: #1b5e20; }
+        .pdf-footer { text-align: center; margin-top: 10px; border-top: 1px solid #ddd; padding-top: 8px; }
+        .pdf-footer img { width: 100px; height: 100px; }
     </style>
 </head>
 <body>
@@ -331,56 +284,47 @@
     </div>
 
     <div id="newBillPage" class="page active">
-        <h2>Harvester Billing App</h2>
-
         <div class="lock-badge" id="lockBadge">
             🔒 Bill Generated & Saved Successfully!
         </div>
 
-        <!-- Dynamic Editable Owner Details Section -->
+        <!-- Dynamic Owner Details Section -->
         <div class="owner-section">
             <h3>🚜 Owner Details</h3>
-            <div class="form-group" style="margin-bottom: 10px;">
+            <div class="form-group">
                 <label for="ownerName">Owner Name:</label>
                 <input type="text" id="ownerName" value="Tarigoppula Srikanth" placeholder="Enter Owner Name">
             </div>
-            <div class="form-group" style="margin-bottom: 0;">
+            <div class="form-group">
                 <label for="ownerPhone">Owner UPI / Mobile Number:</label>
                 <input type="tel" id="ownerPhone" placeholder="Enter 10-digit UPI/Phone Number" maxlength="10" oninput="calculateTotal()">
             </div>
+            <div class="row-2">
+                <div class="form-group">
+                    <label for="price2Wheel">2 Wheel Rate / Hour (₹):</label>
+                    <input type="number" id="price2Wheel" value="2200" placeholder="e.g. 2200" oninput="calculateTotal()">
+                </div>
+                <div class="form-group">
+                    <label for="price4Wheel">4 Wheel Rate / Hour (₹):</label>
+                    <input type="number" id="price4Wheel" value="2500" placeholder="e.g. 2500" oninput="calculateTotal()">
+                </div>
+            </div>
         </div>
 
+        <!-- Farmer Details -->
         <div class="form-group">
             <label for="farmerName">Farmer Name:</label>
-            <input type="text" id="farmerName" placeholder="Farmer Name" oninput="calculateTotal()">
+            <input type="text" id="farmerName" placeholder="Farmer Name">
         </div>
-
         <div class="form-group">
             <label for="phone">Farmer Mobile Number:</label>
             <input type="tel" id="phone" placeholder="10 Digit Mobile Number" maxlength="10">
         </div>
 
-        <div class="time-row">
-            <div class="form-group">
-                <label for="startTime">Start Time:</label>
-                <input type="time" id="startTime" oninput="calculateTotal()">
-            </div>
+        <!-- Trips Container -->
+        <div id="tripsContainer"></div>
 
-            <div class="form-group">
-                <label for="endTime">End Time:</label>
-                <input type="time" id="endTime" oninput="calculateTotal()">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="stopTime">Stop / Break Time (Minutes):</label>
-            <input type="number" id="stopTime" placeholder="e.g. 15" value="0" oninput="calculateTotal()">
-        </div>
-
-        <div class="form-group">
-            <label for="rate">Rate per Hour (₹):</label>
-            <input type="number" id="rate" placeholder="e.g. 2500" oninput="calculateTotal()">
-        </div>
+        <button type="button" class="btn-add-trip" id="btnAddTrip" onclick="addTripRow()">➕ Add Trip (Max 15)</button>
 
         <div class="bill-box">
             <div class="time-info" id="timeInfo">Total Duration: 0 Hours 0 Mins</div>
@@ -393,7 +337,6 @@
             <a id="upiLink" href="#" target="_blank">
                 <img id="barcodeImage" src="" alt="Payment QR Code">
             </a>
-            <div class="payment-icons">PhonePe | Google Pay | Paytm | Amazon Pay</div>
         </div>
 
         <div class="action-buttons">
@@ -407,7 +350,7 @@
     </div>
 
     <div id="historyPage" class="page">
-        <h2>Bill History</h2>
+        <h2 style="color:#2e7d32; text-align:center; margin-bottom:15px;">Bill History</h2>
         <div id="historyList"></div>
     </div>
 </div>
@@ -421,67 +364,48 @@
 
     <table class="pdf-table">
         <tr>
-            <th style="width: 45%;">Field Name</th>
-            <th style="width: 55%;">Value</th>
+            <th style="width: 40%;">Field Name</th>
+            <th style="width: 60%;">Value</th>
         </tr>
-        <tr>
-            <td><strong>Bill Date & Time</strong></td>
-            <td id="pdfDateTime">-</td>
-        </tr>
-        <tr>
-            <td><strong>Owner Name</strong></td>
-            <td id="pdfOwner">-</td>
-        </tr>
-        <tr>
-            <td><strong>Owner Phone / UPI</strong></td>
-            <td id="pdfOwnerPhone">-</td>
-        </tr>
-        <tr>
-            <td><strong>Farmer Name</strong></td>
-            <td id="pdfFarmer">-</td>
-        </tr>
-        <tr>
-            <td><strong>Farmer Mobile Number</strong></td>
-            <td id="pdfPhone">-</td>
-        </tr>
-        <tr>
-            <td><strong>Start Time</strong></td>
-            <td id="pdfStart">-</td>
-        </tr>
-        <tr>
-            <td><strong>End Time</strong></td>
-            <td id="pdfEnd">-</td>
-        </tr>
-        <tr>
-            <td><strong>Stop / Break Time</strong></td>
-            <td id="pdfStop">-</td>
-        </tr>
-        <tr>
-            <td><strong>Total Duration Worked</strong></td>
-            <td id="pdfDuration">-</td>
-        </tr>
-        <tr>
-            <td><strong>Rate per Hour</strong></td>
-            <td id="pdfRate">-</td>
-        </tr>
-        <tr class="pdf-total-row">
-            <td><strong>Total Amount Payable</strong></td>
-            <td id="pdfTotal">-</td>
-        </tr>
+        <tr><td><strong>Bill Date & Time</strong></td><td id="pdfDateTime">-</td></tr>
+        <tr><td><strong>Owner Name</strong></td><td id="pdfOwner">-</td></tr>
+        <tr><td><strong>Owner Phone / UPI</strong></td><td id="pdfOwnerPhone">-</td></tr>
+        <tr><td><strong>Farmer Name</strong></td><td id="pdfFarmer">-</td></tr>
+        <tr><td><strong>Farmer Mobile Number</strong></td><td id="pdfPhone">-</td></tr>
+    </table>
+
+    <h4 style="color:#2e7d32; margin: 10px 0 5px 0; font-size: 12px;">Trip Work Details:</h4>
+    <table class="pdf-table" id="pdfTripsTable">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Wheel Type</th>
+                <th>Start - End</th>
+                <th>Stop</th>
+                <th>Duration</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody id="pdfTripsBody"></tbody>
+        <tfoot>
+            <tr class="pdf-total-row">
+                <td colspan="4"><strong>Total</strong></td>
+                <td id="pdfTotalDuration">-</td>
+                <td id="pdfTotalAmount">-</td>
+            </tr>
+        </tfoot>
     </table>
 
     <div class="pdf-footer">
-        <p style="font-size: 11px; color: #333; margin-bottom: 5px; font-weight: bold;">Tap / Scan 2D Barcode to Pay via UPI:</p>
+        <p style="font-size: 11px; color: #333; margin-bottom: 5px; font-weight: bold;">Tap / Scan QR Code to Pay via UPI:</p>
         <a id="pdfUpiLink" href="#" target="_blank">
             <img id="pdfQRImg" src="" alt="Payment QR">
         </a>
-        <p style="font-size: 10px; color: #666; margin-top: 3px;">Supports PhonePe, Google Pay, Paytm & BHIM UPI</p>
     </div>
 </div>
 
 <script>
-    let netHoursWorked = 0;
-    let formattedDurationText = "";
+    let tripCount = 0;
     let isBillLocked = false;
     let currentLockedBillId = null;
 
@@ -492,54 +416,103 @@
     function switchTab(pageId, btnElement) {
         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
         document.getElementById(pageId).classList.add('active');
         btnElement.classList.add('active');
+        if (pageId === 'historyPage') loadBillHistory();
+    }
 
-        if (pageId === 'historyPage') {
-            loadBillHistory();
+    function addTripRow() {
+        if (tripCount >= 15) {
+            alert('Maximum 15 Trips allowed!');
+            return;
+        }
+        tripCount++;
+        const container = document.getElementById('tripsContainer');
+        const div = document.createElement('div');
+        div.className = 'trip-card';
+        div.id = `tripCard_${tripCount}`;
+        div.innerHTML = `
+            <div class="trip-header">
+                <span>📍 Trip #${tripCount}</span>
+                ${tripCount > 1 ? `<button type="button" class="btn-remove-trip" onclick="removeTripRow(${tripCount})">❌ Remove</button>` : ''}
+            </div>
+            <div class="row-2">
+                <div class="form-group">
+                    <label>Start Time:</label>
+                    <input type="time" class="trip-start" oninput="calculateTotal()">
+                </div>
+                <div class="form-group">
+                    <label>End Time:</label>
+                    <input type="time" class="trip-end" oninput="calculateTotal()">
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="form-group">
+                    <label>Stop (Mins):</label>
+                    <input type="number" class="trip-stop" value="0" oninput="calculateTotal()">
+                </div>
+                <div class="form-group">
+                    <label>Type of Wheel:</label>
+                    <select class="trip-wheel" onchange="calculateTotal()">
+                        <option value="2">2 Wheel</option>
+                        <option value="4" selected>4 Wheel</option>
+                    </select>
+                </div>
+            </div>
+        `;
+        container.appendChild(div);
+        calculateTotal();
+    }
+
+    function removeTripRow(id) {
+        const card = document.getElementById(`tripCard_${id}`);
+        if (card) {
+            card.remove();
+            tripCount--;
+            calculateTotal();
         }
     }
 
     function calculateTotal() {
         if (isBillLocked) return;
 
+        const p2 = parseFloat(document.getElementById('price2Wheel').value) || 0;
+        const p4 = parseFloat(document.getElementById('price4Wheel').value) || 0;
         const ownerPhone = document.getElementById('ownerPhone').value.trim();
-        const startTime = document.getElementById('startTime').value;
-        const endTime = document.getElementById('endTime').value;
-        const stopMinutes = parseFloat(document.getElementById('stopTime').value) || 0;
-        const rate = parseFloat(document.getElementById('rate').value) || 0;
 
-        if (startTime && endTime) {
-            const start = new Date(`1970-01-01T${startTime}:00`);
-            let end = new Date(`1970-01-01T${endTime}:00`);
+        let totalMinsAll = 0;
+        let grandTotal = 0;
 
-            if (end < start) {
-                end.setDate(end.getDate() + 1);
+        const cards = document.querySelectorAll('.trip-card');
+        cards.forEach(card => {
+            const start = card.querySelector('.trip-start').value;
+            const end = card.querySelector('.trip-end').value;
+            const stop = parseFloat(card.querySelector('.trip-stop').value) || 0;
+            const wheel = card.querySelector('.trip-wheel').value;
+
+            if (start && end) {
+                const sDate = new Date(`1970-01-01T${start}:00`);
+                let eDate = new Date(`1970-01-01T${end}:00`);
+                if (eDate < sDate) eDate.setDate(eDate.getDate() + 1);
+
+                let diffMs = eDate - sDate;
+                let diffMins = Math.floor(diffMs / (1000 * 60)) - stop;
+                if (diffMins < 0) diffMins = 0;
+
+                totalMinsAll += diffMins;
+                const rate = (wheel === '2') ? p2 : p4;
+                grandTotal += (diffMins / 60) * rate;
             }
+        });
 
-            let diffMs = end - start;
-            let diffMins = Math.floor(diffMs / (1000 * 60)) - stopMinutes;
+        const hrs = Math.floor(totalMinsAll / 60);
+        const mins = totalMinsAll % 60;
+        const finalAmount = Math.round(grandTotal);
 
-            if (diffMins < 0) diffMins = 0;
+        document.getElementById('timeInfo').innerText = `Total Duration: ${hrs} Hours ${mins} Mins`;
+        document.getElementById('totalAmount').innerText = '₹' + finalAmount.toLocaleString('en-IN');
 
-            const hrs = Math.floor(diffMins / 60);
-            const mins = diffMins % 60;
-
-            netHoursWorked = diffMins / 60;
-            formattedDurationText = `${hrs} Hours ${mins} Mins`;
-
-            document.getElementById('timeInfo').innerText = `Total Duration: ${formattedDurationText}`;
-        } else {
-            netHoursWorked = 0;
-            formattedDurationText = "0 Hours 0 Mins";
-            document.getElementById('timeInfo').innerText = `Total Duration: 0 Hours 0 Mins`;
-        }
-
-        const total = Math.round(netHoursWorked * rate);
-        document.getElementById('totalAmount').innerText = '₹' + total.toLocaleString('en-IN');
-
-        generatePaymentQR(ownerPhone, total);
+        generatePaymentQR(ownerPhone, finalAmount);
     }
 
     function generatePaymentQR(ownerPhone, total) {
@@ -550,7 +523,6 @@
         if (validateIndianMobile(ownerPhone) && total > 0) {
             const upiUrl = `upi://pay?pa=${ownerPhone}@upi&pn=HarvesterOwner&am=${total}&cu=INR`;
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
-            
             img.src = qrUrl;
             upiLink.href = upiUrl;
             container.style.display = 'block';
@@ -561,46 +533,28 @@
 
     function lockBillForm() {
         isBillLocked = true;
-
-        document.getElementById('ownerName').disabled = true;
-        document.getElementById('ownerPhone').disabled = true;
-        document.getElementById('farmerName').disabled = true;
-        document.getElementById('phone').disabled = true;
-        document.getElementById('startTime').disabled = true;
-        document.getElementById('endTime').disabled = true;
-        document.getElementById('stopTime').disabled = true;
-        document.getElementById('rate').disabled = true;
-
+        document.querySelectorAll('input, select').forEach(el => el.disabled = true);
+        document.getElementById('btnAddTrip').style.display = 'none';
+        document.querySelectorAll('.btn-remove-trip').forEach(b => b.style.display = 'none');
         document.getElementById('lockBadge').style.display = 'block';
-        document.getElementById('btnReset').style.display = 'flex';
+        document.getElementById('btnReset').style.display = 'block';
     }
 
     function resetFormForNewBill() {
         isBillLocked = false;
         currentLockedBillId = null;
-
-        document.getElementById('ownerName').disabled = false;
-        document.getElementById('ownerPhone').disabled = false;
-        document.getElementById('farmerName').disabled = false;
-        document.getElementById('phone').disabled = false;
-        document.getElementById('startTime').disabled = false;
-        document.getElementById('endTime').disabled = false;
-        document.getElementById('stopTime').disabled = false;
-        document.getElementById('rate').disabled = false;
+        document.querySelectorAll('input, select').forEach(el => el.disabled = false);
 
         document.getElementById('farmerName').value = '';
         document.getElementById('phone').value = '';
-        document.getElementById('startTime').value = '';
-        document.getElementById('endTime').value = '';
-        document.getElementById('stopTime').value = '0';
-        document.getElementById('rate').value = '';
-        
-        document.getElementById('timeInfo').innerText = `Total Duration: 0 Hours 0 Mins`;
-        document.getElementById('totalAmount').innerText = '₹0';
-        document.getElementById('codeContainer').style.display = 'none';
+        document.getElementById('tripsContainer').innerHTML = '';
+        tripCount = 0;
+        addTripRow();
 
+        document.getElementById('btnAddTrip').style.display = 'block';
         document.getElementById('lockBadge').style.display = 'none';
         document.getElementById('btnReset').style.display = 'none';
+        calculateTotal();
     }
 
     function validateAndGetBillDetails() {
@@ -608,76 +562,118 @@
         const ownerPhone = document.getElementById('ownerPhone').value.trim();
         const farmerName = document.getElementById('farmerName').value.trim();
         const phone = document.getElementById('phone').value.trim();
-        const startTime = document.getElementById('startTime').value;
-        const endTime = document.getElementById('endTime').value;
-        const stopMinutes = document.getElementById('stopTime').value || 0;
-        const rate = document.getElementById('rate').value;
-        const total = Math.round(netHoursWorked * (parseFloat(rate) || 0));
+        const p2 = parseFloat(document.getElementById('price2Wheel').value) || 0;
+        const p4 = parseFloat(document.getElementById('price4Wheel').value) || 0;
 
         if (!ownerPhone || !validateIndianMobile(ownerPhone)) {
             alert('Please enter a valid 10-digit Owner UPI / Mobile Number!');
             return null;
         }
-
-        if (!farmerName || !startTime || !endTime || !rate) {
-            alert('Please fill Farmer Name, Start Time, End Time, and Rate!');
+        if (!farmerName) {
+            alert('Please fill Farmer Name!');
             return null;
         }
-
         if (!validateIndianMobile(phone)) {
             alert('Please enter a valid 10-digit Farmer Mobile Number!');
             return null;
         }
 
-        if (!currentLockedBillId) {
-            currentLockedBillId = Date.now();
+        let tripsData = [];
+        let grandTotal = 0;
+        let grandMins = 0;
+
+        const cards = document.querySelectorAll('.trip-card');
+        cards.forEach((card, idx) => {
+            const start = card.querySelector('.trip-start').value;
+            const end = card.querySelector('.trip-end').value;
+            const stop = parseFloat(card.querySelector('.trip-stop').value) || 0;
+            const wheel = card.querySelector('.trip-wheel').value;
+
+            if (start && end) {
+                const sDate = new Date(`1970-01-01T${start}:00`);
+                let eDate = new Date(`1970-01-01T${end}:00`);
+                if (eDate < sDate) eDate.setDate(eDate.getDate() + 1);
+
+                let diffMins = Math.floor((eDate - sDate) / (1000 * 60)) - stop;
+                if (diffMins < 0) diffMins = 0;
+
+                const rate = (wheel === '2') ? p2 : p4;
+                const amt = Math.round((diffMins / 60) * rate);
+
+                grandMins += diffMins;
+                grandTotal += amt;
+
+                const hrs = Math.floor(diffMins / 60);
+                const mins = diffMins % 60;
+
+                tripsData.push({
+                    tripNo: idx + 1,
+                    wheel: `${wheel} Wheel`,
+                    start, end, stop,
+                    duration: `${hrs}h ${mins}m`,
+                    amount: amt
+                });
+            }
+        });
+
+        if (tripsData.length === 0) {
+            alert('Please enter at least one valid Trip duration (Start & End Time)!');
+            return null;
         }
+
+        if (!currentLockedBillId) currentLockedBillId = Date.now();
 
         const now = new Date();
         const currentDateTime = now.toLocaleDateString('en-IN') + ' ' + now.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
 
+        const totalHrs = Math.floor(grandMins / 60);
+        const totalMins = grandMins % 60;
+
         return {
             id: currentLockedBillId,
             dateTime: currentDateTime,
-            ownerName,
-            ownerPhone,
-            farmerName,
-            phone,
-            startTime,
-            endTime,
-            stopMinutes,
-            duration: formattedDurationText,
-            rate,
-            total
+            ownerName, ownerPhone, farmerName, phone,
+            trips: tripsData,
+            totalDuration: `${totalHrs} Hours ${totalMins} Mins`,
+            total: grandTotal
         };
     }
 
     function saveBillToStorage(billRecord) {
         let history = JSON.parse(localStorage.getItem('harvesterHistory')) || [];
-        const existingIndex = history.findIndex(b => b.id === billRecord.id);
-        if (existingIndex === -1) {
+        if (!history.some(b => b.id === billRecord.id)) {
             history.unshift(billRecord);
             localStorage.setItem('harvesterHistory', JSON.stringify(history));
         }
     }
 
     function downloadA4PDF(item) {
-        const ownerNameVal = item.ownerName || "Tarigoppula Srikanth";
-        const ownerPhoneVal = item.ownerPhone || "N/A";
+        document.getElementById('pdfDateTime').innerText = item.dateTime || '-';
+        document.getElementById('pdfOwner').innerText = item.ownerName || '-';
+        document.getElementById('pdfOwnerPhone').innerText = item.ownerPhone || '-';
+        document.getElementById('pdfFarmer').innerText = item.farmerName || '-';
+        document.getElementById('pdfPhone').innerText = item.phone || '-';
 
-        document.getElementById('pdfDateTime').innerText = item.dateTime || new Date().toLocaleString('en-IN');
-        document.getElementById('pdfOwner').innerText = ownerNameVal;
-        document.getElementById('pdfOwnerPhone').innerText = ownerPhoneVal;
-        document.getElementById('pdfFarmer').innerText = item.farmerName || "-";
-        document.getElementById('pdfPhone').innerText = item.phone || "-";
-        document.getElementById('pdfStart').innerText = item.startTime || "-";
-        document.getElementById('pdfEnd').innerText = item.endTime || "-";
-        document.getElementById('pdfStop').innerText = `${item.stopMinutes || 0} Minutes`;
-        document.getElementById('pdfDuration').innerText = item.duration || "-";
-        document.getElementById('pdfRate').innerText = `₹${item.rate || 0} / hour`;
-        document.getElementById('pdfTotal').innerText = `₹${(item.total || 0).toLocaleString('en-IN')}`;
+        let tbodyHtml = '';
+        if (item.trips && item.trips.length > 0) {
+            item.trips.forEach(t => {
+                tbodyHtml += `
+                    <tr>
+                        <td>${t.tripNo}</td>
+                        <td>${t.wheel}</td>
+                        <td>${t.start} - ${t.end}</td>
+                        <td>${t.stop}m</td>
+                        <td>${t.duration}</td>
+                        <td>₹${t.amount ? t.amount.toLocaleString('en-IN') : 0}</td>
+                    </tr>
+                `;
+            });
+        }
+        document.getElementById('pdfTripsBody').innerHTML = tbodyHtml;
+        document.getElementById('pdfTotalDuration').innerText = item.totalDuration || 'N/A';
+        document.getElementById('pdfTotalAmount').innerText = `₹${item.total ? item.total.toLocaleString('en-IN') : 0}`;
 
-        const upiUrl = `upi://pay?pa=${ownerPhoneVal}@upi&pn=HarvesterOwner&am=${item.total || 0}&cu=INR`;
+        const upiUrl = `upi://pay?pa=${item.ownerPhone}@upi&pn=HarvesterOwner&am=${item.total || 0}&cu=INR`;
         document.getElementById('pdfQRImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(upiUrl)}`;
         document.getElementById('pdfUpiLink').href = upiUrl;
 
@@ -685,11 +681,11 @@
         pdfElement.style.display = 'block';
 
         const opt = {
-            margin:       0.2,
-            filename:     `Harvester_Bill_${(item.farmerName || 'Bill').replace(/\s+/g, '_')}.pdf`,
-            image:        { type: 'jpeg', quality: 0.98 },
-            html2canvas:  { scale: 2, useCORS: true },
-            jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+            margin: 0.2,
+            filename: `Harvester_Bill_${(item.farmerName || 'Bill').replace(/\s+/g, '_')}.pdf`,
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
         };
 
         html2pdf().set(opt).from(pdfElement).save().then(() => {
@@ -700,7 +696,6 @@
     function generateAndSaveBill() {
         const item = validateAndGetBillDetails();
         if (!item) return;
-
         saveBillToStorage(item);
         lockBillForm();
         downloadA4PDF(item);
@@ -709,9 +704,7 @@
     function downloadHistoryPDF(id) {
         const history = JSON.parse(localStorage.getItem('harvesterHistory')) || [];
         const item = history.find(b => b.id == id);
-        if (item) {
-            downloadA4PDF(item);
-        }
+        if (item) downloadA4PDF(item);
     }
 
     function loadBillHistory() {
@@ -719,46 +712,55 @@
         const history = JSON.parse(localStorage.getItem('harvesterHistory')) || [];
 
         if (history.length === 0) {
-            historyContainer.innerHTML = `<div class="no-history">No bills saved yet.</div>`;
+            historyContainer.innerHTML = `<div style="text-align:center; color:#888; padding:20px;">No bills saved yet.</div>`;
             return;
         }
 
         let html = '';
         history.forEach(item => {
-            const ownerNameVal = item.ownerName || "Tarigoppula Srikanth";
-            const ownerPhoneVal = item.ownerPhone || "N/A";
+            // FIX: Ensure totalDuration displays correctly even for older stored data
+            let displayDuration = item.totalDuration;
+            if (!displayDuration || displayDuration.includes('undefined')) {
+                if (item.trips && item.trips.length > 0) {
+                    displayDuration = item.trips.map(t => t.duration).join(', ');
+                } else {
+                    displayDuration = "Duration Not Recorded";
+                }
+            }
+
+            const tripCountText = (item.trips && item.trips.length > 0) ? `${item.trips.length} Trips` : '1 Trip';
+
             html += `
                 <div class="history-card">
-                    <div class="history-header">
-                        <span>👤 ${item.farmerName}</span>
-                        <span>₹${item.total.toLocaleString('en-IN')}</span>
+                    <div style="display:flex; justify-content:space-between; font-weight:bold; color:#2e7d32; margin-bottom:5px;">
+                        <span>👤 ${item.farmerName || 'Unknown'}</span>
+                        <span>₹${item.total ? item.total.toLocaleString('en-IN') : 0}</span>
                     </div>
-                    <div class="history-details">
-                        📅 Date & Time: ${item.dateTime || item.date}<br>
-                        📞 Farmer Mobile: ${item.phone}<br>
-                        🚜 Owner: ${ownerNameVal} (${ownerPhoneVal})<br>
-                        ⏱️ Duration: ${item.duration} (${item.startTime} - ${item.endTime})<br>
-                        💰 Rate: ₹${item.rate}/Hour | Stop: ${item.stopMinutes} Mins
+                    <div style="font-size:12px; color:#555; line-height:1.5; margin-bottom:8px;">
+                        📅 ${item.dateTime || 'N/A'}<br>
+                        📞 Farmer Mobile: ${item.phone || 'N/A'}<br>
+                        🚜 Owner: ${item.ownerName || 'Srikanth'} (${item.ownerPhone || ''})<br>
+                        ⏱️ Total Duration: ${displayDuration} (${tripCountText})
                     </div>
-                    <div style="margin-top:8px;">
-                        <button class="btn-sm btn-pdf-sm" onclick="downloadHistoryPDF('${item.id}')" style="padding:10px; font-size:13px;">📄 Download A4 PDF</button>
-                        <button class="btn-sm btn-delete" onclick="deleteHistory('${item.id}')" style="padding:8px; font-size:12px;">🗑️ Delete Record</button>
-                    </div>
+                    <button class="btn-sm btn-pdf-sm" onclick="downloadHistoryPDF('${item.id}')">📄 Download A4 PDF</button>
+                    <button class="btn-sm btn-delete" onclick="deleteHistory('${item.id}')">🗑️ Delete Record</button>
                 </div>
             `;
         });
-
         historyContainer.innerHTML = html;
     }
 
     function deleteHistory(id) {
-        if (confirm('Are you sure you want to delete this bill history record?')) {
+        if (confirm('Are you sure you want to delete this record?')) {
             let history = JSON.parse(localStorage.getItem('harvesterHistory')) || [];
             history = history.filter(b => b.id != id);
             localStorage.setItem('harvesterHistory', JSON.stringify(history));
             loadBillHistory();
         }
     }
+
+    // Initialize first trip row
+    addTripRow();
 </script>
 
 </body>
