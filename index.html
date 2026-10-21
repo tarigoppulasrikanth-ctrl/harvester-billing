@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harvester Billing System</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: #eef2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2e7d32;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.3s;
+        }
+        input:focus, select:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 5px rgba(46, 125, 50, 0.3);
+        }
+        .bill-box {
+            background-color: #e8f5e9;
+            border: 1px dashed #2e7d32;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        .bill-box h3 {
+            color: #1b5e20;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .bill-box .amount {
+            color: #2e7d32;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .btn-whatsapp {
+            width: 100%;
+            background-color: #25d366;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-whatsapp:hover {
+            background-color: #1ebd57;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>🌾 హార్వెస్టర్ బిల్లింగ్ యాప్</h2>
+
+    <div class="form-group">
+        <label for="farmerName">రైతు పేరు (Farmer Name):</label>
+        <input type="text" id="farmerName" placeholder="ఉదా: రామయ్య">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">వాట్సాప్ నంబర్ (WhatsApp Number):</label>
+        <input type="number" id="phone" placeholder="10 అంకెల మొబైల్ నంబర్">
+    </div>
+
+    <div class="form-group">
+        <label for="crop">పంట రకం (Crop Type):</label>
+        <select id="crop">
+            <option value="వరి (Paddy)">వరి (Paddy)</option>
+            <option value="జొన్న (Maize)">జొన్న (Maize)</option>
+            <option value="పత్తి (Cotton)">పత్తి (Cotton)</option>
+            <option value="ఇతర పంటలు">ఇతర పంటలు</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="rate">గంటకి/ఎకరానికి ధర (Rate per Hour/Acre):</label>
+        <input type="number" id="rate" placeholder="ఉదా: 2500" oninput="calculateTotal()">
+    </div>
+
+    <div class="form-group">
+        <label for="duration">మొత్తం గంటలు/ఎకరాలు (Total Hours/Acres):</label>
+        <input type="number" id="duration" step="0.1" placeholder="ఉదా: 3.5" oninput="calculateTotal()">
+    </div>
+
+    <div class="bill-box">
+        <h3>మొత్తం చెల్లించాల్సిన బిల్లు</h3>
+        <div class="amount" id="totalAmount">₹0</div>
+    </div>
+
+    <button class="btn-whatsapp" onclick="sendWhatsApp()">
+        📲 వాట్సాప్‌లో బిల్లు పంపండి
+    </button>
+</div>
+
+<script>
+    function calculateTotal() {
+        const rate = parseFloat(document.getElementById('rate').value) || 0;
+        const duration = parseFloat(document.getElementById('duration').value) || 0;
+        const total = rate * duration;
+        document.getElementById('totalAmount').innerText = '₹' + total.toLocaleString('en-IN');
+    }
+
+    function sendWhatsApp() {
+        const farmerName = document.getElementById('farmerName').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const crop = document.getElementById('crop').value;
+        const rate = document.getElementById('rate').value;
+        const duration = document.getElementById('duration').value;
+        const total = (parseFloat(rate) || 0) * (parseFloat(duration) || 0);
+
+        if (!farmerName || !rate || !duration) {
+            alert('దయచేసి రైతు పేరు, ధర మరియు గంటల వివరాలు ఎంటర్ చేయండి!');
+            return;
+        }
+
+        const text = `🌾 *హార్వెస్టర్ బిల్ వివరాలు* 🌾\n\n` +
+                     `👤 *రైతు పేరు:* ${farmerName}\n` +
+                     `🌱 *పంట:* ${crop}\n` +
+                     `💰 *ధర (గంటకి/ఎకరానికి):* ₹${rate}\n` +
+                     `⏱️ *మొత్తం గంటలు/ఎకరాలు:* ${duration}\n` +
+                     `----------------------------\n` +
+                     `💵 *మొత్తం బిల్లు:* ₹${total.toLocaleString('en-IN')}\n` +
+                     `----------------------------\n` +
+                     `ధన్యవాదాలు!`;
+
+        const encodedText = encodeURIComponent(text);
+        
+        let url = '';
+        if (phone.length === 10) {
+            url = `https://wa.me/91${phone}?text=${encodedText}`;
+        } else {
+            url = `https://wa.me/?text=${encodedText}`;
+        }
+
+        window.open(url, '_blank');
+    }
+</script>
+
+</body>
+</html>
